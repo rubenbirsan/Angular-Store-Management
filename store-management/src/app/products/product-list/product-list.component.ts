@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { fromEvent } from 'rxjs';
 import { debounceTime, startWith, map } from 'rxjs/operators';
+import { Product } from '../product';
 
 @Component({
   selector: 'br-product-list',
@@ -8,13 +9,25 @@ import { debounceTime, startWith, map } from 'rxjs/operators';
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit {
+ 
 
   pageTitle: string = "Product List";
   imageWidth: number = 40;
   imageMargin: number = 2;
   showImages: boolean = false;
-  listFilter: string = 'cart'
-  products: any[] = [
+
+  _listFilter = '';
+  get listFilter(): string {
+    return this._listFilter;
+  }
+  set listFilter(value: string) {
+    this._listFilter = value;
+    this.filteredProducts = this.listFilter ? this.performFilter(this.listFilter) : this.products;
+  }
+
+  filteredProducts: Product[] = [];
+
+  products: Product[] = [
     {
       "productId": 1,
       "productName": "Leaf Rake",
@@ -69,11 +82,22 @@ export class ProductListComponent implements OnInit {
 
   currentWidth = 0;
 
-  toggleImage(){
+  toggleImage() : void{
     this.showImages = !this.showImages;
   }
 
-  constructor() { }
+  
+  performFilter(filterBy: string): Product[] {
+    filterBy = filterBy.toLocaleLowerCase();
+    return this.products.filter((product: Product) =>
+      product.productName.toLocaleLowerCase().indexOf(filterBy) !== -1 ||
+      product.productCode.toLocaleLowerCase().indexOf(filterBy) !== -1);
+  }
+
+  constructor() { 
+    this.filteredProducts = this.products;
+    this.listFilter = '';
+  }
 
   ngOnInit() {
 

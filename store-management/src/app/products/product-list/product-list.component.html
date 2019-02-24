@@ -6,7 +6,8 @@
     <div class='row'>
       <div class='col-md-2'>Filter by:</div>
       <div class='col-md-4'>
-        <input type='text'
+        <input class="form-control" type='text'
+        [(ngModel)]='listFilter'
              />
       </div>
     </div>
@@ -33,7 +34,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor='let product of products'>
+          <tr *ngFor='let product of filteredProducts'>
             <td *ngIf="currentWidth  > 600">
               <img *ngIf='showImages' [src]='product.imageUrl' 
                   [title]='product.productName | uppercase'
@@ -41,7 +42,7 @@
                   [style.margin.px]='imageMargin'> 
             </td>
             <td> {{ product.productName }}</td>
-            <td>{{ product.productCode | lowercase  }}</td>
+            <td>{{ product.productCode | lowercase |  convertToSpace:'-' }}</td>
             <td>{{ product.releaseDate }}</td>
             <td>{{ product.price | currency:'EUR' | lowercase }}</td>
             <td *ngIf="currentWidth > 600">{{ product.starRating }} </td>
