@@ -9,6 +9,7 @@ import { ProductListComponent } from './products/product-list/product-list.compo
   declarations: [
     AppComponent,
     ProductListComponent
+
   ],
   imports: [
     BrowserModule,

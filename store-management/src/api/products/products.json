@@ -1,18 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { fromEvent } from 'rxjs';
-import { debounceTime, startWith, map } from 'rxjs/operators';
-
-@Component({
-  selector: 'br-product-list',
-  templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.css']
-})
-export class ProductListComponent implements OnInit {
-
-  pageTitle: string = "Product List";
-  imageWidth: number = 40;
-  imageMargin: number = 2;
-  products: any[] = [
+[
     {
       "productId": 1,
       "productName": "Leaf Rake",
@@ -63,18 +49,4 @@ export class ProductListComponent implements OnInit {
       "starRating": 4.6,
       "imageUrl": "https://openclipart.org/image/300px/svg_to_png/120337/xbox-controller_01.png"
     }
-  ];
-
-  currentWidth = 0;
-
-  constructor() { }
-
-  ngOnInit() {
-
-    fromEvent(window, 'resize').pipe(
-      debounceTime(10),
-      map(() => window.innerWidth),
-      startWith(window.innerWidth),
-    ).subscribe(width => this.currentWidth = width);
-  }
-}
+  ]
