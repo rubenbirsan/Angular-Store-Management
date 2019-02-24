@@ -12,6 +12,8 @@ export class ProductListComponent implements OnInit {
   pageTitle: string = "Product List";
   imageWidth: number = 40;
   imageMargin: number = 2;
+  showImages: boolean = false;
+  listFilter: string = 'cart'
   products: any[] = [
     {
       "productId": 1,
@@ -66,6 +68,10 @@ export class ProductListComponent implements OnInit {
   ];
 
   currentWidth = 0;
+
+  toggleImage(){
+    this.showImages = !this.showImages;
+  }
 
   constructor() { }
 

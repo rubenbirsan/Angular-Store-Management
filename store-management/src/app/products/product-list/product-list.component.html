@@ -3,19 +3,26 @@
     {{ pageTitle }}
   </div>
   <div class='card-body'>
+    <div class='row'>
+      <div class='col-md-2'>Filter by:</div>
+      <div class='col-md-4'>
+        <input type='text'
+             />
+      </div>
+    </div>
     <div class='row'
          *ngIf='listFilter'>
       <div class='col-md-6'>
-        <h4>Filtered by: </h4>
+        <h4>Filtered by: {{listFilter}}</h4>
       </div>
     </div>
     <div class='table-responsive'>
       <table class='table' *ngIf="products && products.length">
         <thead>
           <tr>
-            <th>
-              <button class='btn btn-primary'>
-                Show Image
+            <th *ngIf="currentWidth  > 600">
+              <button (click)='toggleImage()' class='btn btn-primary'>
+                {{ showImages ? 'Hide' : 'Show' }}  {{ currentWidth  > 800 ? 'Image' : '' }} 
               </button>
             </th>
             <th>Product</th>
@@ -27,21 +34,21 @@
         </thead>
         <tbody>
           <tr *ngFor='let product of products'>
-            <td>
-              <img [src]='product.imageUrl' 
-                  [title]='product.productName'
+            <td *ngIf="currentWidth  > 600">
+              <img *ngIf='showImages' [src]='product.imageUrl' 
+                  [title]='product.productName | uppercase'
                   [style.width.px]='imageWidth'
                   [style.margin.px]='imageMargin'> 
             </td>
             <td> {{ product.productName }}</td>
-            <td>{{ product.productCode  }}</td>
+            <td>{{ product.productCode | lowercase  }}</td>
             <td>{{ product.releaseDate }}</td>
-            <td>{{ product.price  }}</td>
+            <td>{{ product.price | currency:'EUR' | lowercase }}</td>
             <td *ngIf="currentWidth > 600">{{ product.starRating }} </td>
           </tr>
         </tbody>
       </table>
-      {{ products | json }}
+      <!-- {{ products | json }} -->
     </div>
   </div>
 </div>
