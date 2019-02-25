@@ -12,8 +12,8 @@
       </div>
     </div>
     <div class='row'
-         *ngIf='listFilter'>
-      <div class='col-md-6'>
+         *ngIf='listFilter'> 
+      <div class='col-md-6'> 
         <h4>Filtered by: {{listFilter}}</h4>
       </div>
     </div>
@@ -30,13 +30,14 @@
             <th>Code</th>
             <th>Available</th>
             <th>Price</th>
-            <th *ngIf="currentWidth  > 600">5 Star Rating</th>
+            <th *ngIf="currentWidth  > 600"> {{currentWidth  > 748 ? '5 Star' : ''}} Rating</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor='let product of filteredProducts'>
             <td *ngIf="currentWidth  > 600">
-              <img *ngIf='showImages' [src]='product.imageUrl' 
+              <img *ngIf='showImages' 
+                  [src]='product.imageUrl' 
                   [title]='product.productName | uppercase'
                   [style.width.px]='imageWidth'
                   [style.margin.px]='imageMargin'> 
@@ -45,7 +46,9 @@
             <td>{{ product.productCode | lowercase |  convertToSpace:'-' }}</td>
             <td>{{ product.releaseDate }}</td>
             <td>{{ product.price | currency:'EUR' | lowercase }}</td>
-            <td *ngIf="currentWidth > 600">{{ product.starRating }} </td>
+            <td *ngIf="currentWidth > 600">
+              <br-star [rating]='product.starRating'></br-star> 
+            </td>
           </tr>
         </tbody>
       </table>
