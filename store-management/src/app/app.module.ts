@@ -8,6 +8,7 @@ import { ProductListComponent } from './products/product-list/product-list.compo
 import { ConvertToSpacePipe } from './shared/convert-to-space.pipe';
 import { StarComponent } from './shared/star/star.component';
 import { BreadcrumbComponent } from './shared/breadcrumb/breadcrumb.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { BreadcrumbComponent } from './shared/breadcrumb/breadcrumb.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

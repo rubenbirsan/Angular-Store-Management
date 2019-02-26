@@ -27,8 +27,8 @@ export class ProductListComponent implements OnInit {
 
   filteredProducts: Product[] = [];
   products: Product[] = [];
-
   currentWidth = 0;
+  errorMessage = '';
 
   toggleImage() : void{
     this.showImages = !this.showImages;
@@ -56,8 +56,14 @@ export class ProductListComponent implements OnInit {
       startWith(window.innerWidth),
     ).subscribe(width => this.currentWidth = width);
 
-    this.products = this.productService.getProducts().concat(this.productService.getProducts());
-    this.filteredProducts = this.products;
-    this.listFilter = '';
+    this.productService.getProducts().subscribe(
+      products => {
+        this.products = products;
+        this.filteredProducts = this.products;
+        this.listFilter = '';
+      },
+      error => this.errorMessage = error
+      );
+   
   }
 }

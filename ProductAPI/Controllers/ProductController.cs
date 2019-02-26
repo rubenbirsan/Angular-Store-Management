@@ -4,13 +4,14 @@ using Newtonsoft.Json;
 using ProductAPI.Models;
 using System.Data;
 using System.Linq;
+using Microsoft.AspNetCore.Cors;
 
 namespace ProductAPI.Controllers {
 
     [Route ("api/Product")]
     [ApiController]
+    [EnableCors]
     public class ProductController : ControllerBase {
-
 
         [HttpGet("GetAllProducts")]
         public ActionResult<IEnumerable<Product>> GetAllProducts() {

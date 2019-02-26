@@ -7,9 +7,7 @@ namespace ProductAPI.Models {
         public int ProductId { get; set; }
         public string ProductName { get; set; }
         public string ProductCode { get; set; }
-
         public string ReleaseDate { get; set; }
-
         [JsonIgnore]
         public DateTime? ReleaseDt { get; set; }
         public decimal Price { get; set; }
