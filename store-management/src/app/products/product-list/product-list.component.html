@@ -47,7 +47,9 @@
             <td>{{ product.releaseDate }}</td>
             <td>{{ product.price | currency:'EUR' | lowercase }}</td>
             <td *ngIf="currentWidth > 600">
-              <br-star [rating]='product.starRating'></br-star> 
+              <br-star [rating]='product.starRating'
+                      (ratingClicked)='onRatingClicked($event)'>
+             </br-star> 
             </td>
           </tr>
         </tbody>
