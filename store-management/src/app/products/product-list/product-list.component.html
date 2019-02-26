@@ -23,14 +23,14 @@
           <tr>
             <th *ngIf="currentWidth  > 600">
               <button (click)='toggleImage()' class='btn btn-primary'>
-                {{ showImages ? 'Hide' : 'Show' }}  {{ currentWidth  > 800 ? 'Image' : '' }} 
+                {{ showImages ? 'Hide' : 'Show' }}  {{ currentWidth  > 830 ? 'Image' : '' }} 
               </button>
             </th>
             <th>Product</th>
             <th>Code</th>
             <th>Available</th>
             <th>Price</th>
-            <th *ngIf="currentWidth  > 600"> {{currentWidth  > 748 ? '5 Star' : ''}} Rating</th>
+            <th *ngIf="currentWidth  > 600"> {{currentWidth  > 780 ? '5 Star' : ''}} Rating</th>
           </tr>
         </thead>
         <tbody>
@@ -55,7 +55,13 @@
           
         </tbody>
       </table>
+     
       <!-- {{ products | json }} -->
     </div>
   </div>
+</div>
+
+<div *ngIf='errorMessage'
+     class='alert alert-danger'>
+  Error: {{ errorMessage }}
 </div>
