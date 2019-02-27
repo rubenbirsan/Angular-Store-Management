@@ -10,7 +10,6 @@ namespace ProductAPI.Controllers {
 
     [Route ("api/Product")]
     [ApiController]
-    [EnableCors]
     public class ProductController : ControllerBase {
 
         [HttpGet("GetAllProducts")]

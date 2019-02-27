@@ -9,17 +9,25 @@ import { tap, catchError } from 'rxjs/operators';
 })
 export class ProductService {
 
-  private productUrl = 'http://localhost:5000/api/Product/GetAllProducts';
+  private productUrl = 'http://localhost:5000/api/Product';
   // private productUrl = 'api/products/products.json';
 
   constructor(private http: HttpClient) { }
 
   getProducts() : Observable<Product[]>{
-    return this.http.get<Product[]>(this.productUrl).pipe(
+    return this.http.get<Product[]>(this.productUrl + "/GetAllProducts").pipe(
       tap(data => console.log('All' + JSON.stringify(data))),
       catchError(this.handleError)
     );
   }
+
+  getProductById(id: number) : Observable<Product>{
+    return this.http.get<Product>(this.productUrl + '/GetProductById/' + id).pipe(
+      tap(data => console.log('All' + JSON.stringify(data))),
+      catchError(this.handleError)
+    );
+  }
+
   private handleError(err: HttpErrorResponse) {
     // in a real world app, we may send the server to some remote logging infrastructure
     // instead of just logging it to the console
