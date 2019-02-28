@@ -16,14 +16,28 @@ export class ProductService {
 
   getProducts() : Observable<Product[]>{
     return this.http.get<Product[]>(this.productUrl + "/GetAllProducts").pipe(
-      tap(data => console.log('All' + JSON.stringify(data))),
+     // tap(data => console.log('All' + JSON.stringify(data))),
       catchError(this.handleError)
     );
   }
 
   getProductById(id: number) : Observable<Product>{
-    return this.http.get<Product>(this.productUrl + '/GetProductById/' + id).pipe(
-      tap(data => console.log('All' + JSON.stringify(data))),
+    return this.http.get<Product>(this.productUrl + '/GetProduct/' + id).pipe(
+     // tap(data => console.log('All' + JSON.stringify(data))),
+      catchError(this.handleError)
+    );
+  }
+
+  isLastProduct(id: number) : Observable<boolean>{
+    return this.http.get<boolean>(this.productUrl + '/IsLastProduct/' + id).pipe(
+     // tap(data => console.log('All' + JSON.stringify(data))),
+      catchError(this.handleError)
+    );
+  }
+
+  isFirstProduct(id: number) : Observable<boolean>{
+    return this.http.get<boolean>(this.productUrl + '/IsFirstProduct/' + id).pipe(
+     // tap(data => console.log('All' + JSON.stringify(data))),
       catchError(this.handleError)
     );
   }

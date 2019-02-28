@@ -5,17 +5,23 @@ import { ConvertToSpacePipe } from '../shared/convert-to-space.pipe';
 import { RouterModule } from '@angular/router';
 import { ProductDetailGuard } from './product-detail.guard';
 import { SharedModule } from '../shared/shared.module';
+import { CreateProductComponent } from './create-product/create-product.component';
+import { EditProductComponent } from './edit-product/edit-product.component';
 
 @NgModule({
   declarations: [
     ProductListComponent,
     ProductDetailComponent,
-    ConvertToSpacePipe
+    ConvertToSpacePipe,
+    CreateProductComponent,
+    EditProductComponent
   ],
   imports: [
     RouterModule.forChild([
       { path: 'products', component: ProductListComponent },
       { path: 'products/:id', canActivate: [ProductDetailGuard],  component: ProductDetailComponent },
+      { path: 'create-product', component: CreateProductComponent },
+      { path: 'edit-product/:id', canActivate: [ProductDetailGuard],  component: EditProductComponent },
     ]),
     SharedModule
   ]

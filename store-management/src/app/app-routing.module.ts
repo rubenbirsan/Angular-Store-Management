@@ -4,9 +4,14 @@ import { ProductListComponent } from './products/product-list/product-list.compo
 import { ProductDetailComponent } from './products/product-detail/product-detail.component';
 import { WelcomeComponent } from './home/welcome/welcome.component';
 import { ProductDetailGuard } from './products/product-detail.guard';
+import { CreateProductComponent } from './products/create-product/create-product.component';
+import { EditProductComponent } from './products/edit-product/edit-product.component';
 
 const routes: Routes = [
- 
+  { path: 'products', component: ProductListComponent },
+  { path: 'products/:id', canActivate: [ProductDetailGuard],  component: ProductDetailComponent },
+  { path: 'create-product', component: CreateProductComponent },
+  { path: 'edit-product/:id', canActivate: [ProductDetailGuard],  component: EditProductComponent },
   { path: 'welcome', component: WelcomeComponent },
   { path: '', redirectTo: 'welcome', pathMatch: 'full' },
   { path: '**', redirectTo: 'welcome', pathMatch: 'full' },

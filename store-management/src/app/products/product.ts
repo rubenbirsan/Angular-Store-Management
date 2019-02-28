@@ -7,5 +7,7 @@ export interface Product {
   description: string;
   starRating: number;
   imageUrl: string;
+  isFirst: boolean;
+  isLast: boolean;
 }
 
