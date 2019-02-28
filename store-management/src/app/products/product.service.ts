@@ -42,6 +42,18 @@ export class ProductService {
     );
   }
 
+  createProduct(product: Product): Observable<any> {
+    return this.http.post(this.productUrl + '/CreateProduct', product, {
+      responseType: 'text'
+    });
+  }
+
+  updateProduct(id: number, product: Product): Observable<any> {
+    return this.http.put(this.productUrl + '/UpdateProduct/' + id, product, {
+      responseType: 'text'
+    });
+  }
+
   private handleError(err: HttpErrorResponse) {
     // in a real world app, we may send the server to some remote logging infrastructure
     // instead of just logging it to the console

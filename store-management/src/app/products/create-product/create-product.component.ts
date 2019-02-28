@@ -14,8 +14,10 @@ export class CreateProductComponent implements OnInit {
   pageTitle: string = 'Create new product'
   productForm: FormGroup;
   @Output() create = new EventEmitter<Product>();
+  errorMessage = '';
+  resultMessage = '';
   
-  constructor() { }
+  constructor(private productService: ProductService) { }
 
   ngOnInit() {
     this.productForm = new FormGroup({
@@ -33,11 +35,14 @@ export class CreateProductComponent implements OnInit {
     }
 
     const newProduct: Product = {
-      ...this.productForm.value,
-      rating: 1
+      ...this.productForm.value
     };
 
-    this.create.emit(newProduct);
+    this.productService.createProduct(newProduct).subscribe(
+      product =>{
+         console.log(product)
+      },
+      error => this.errorMessage = <any>error);
   }
 
 

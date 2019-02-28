@@ -43,7 +43,7 @@ namespace ProductAPI.Controllers {
             if (ModelState.IsValid) {
 
                 product.ReleaseDate = DateTime.Now.ToString ("MMMM dd, yyyy");
-                product.ImageUrl = "https://openclipart.org/image/300px/svg_to_png/27070/egore911_saw.png";
+                product.ImageUrl = "https://material.angularjs.org/latest/img/logo.svg";
                 product.ProductId = products.OrderByDescending (w => w.ProductId).FirstOrDefault ().ProductId + 1;
 
                 products.Add (product);
@@ -91,7 +91,11 @@ namespace ProductAPI.Controllers {
 
             var products = JsonConvert.DeserializeObject<List<Product>> (System.IO.File.ReadAllText ("Files/products.json"));
             var productFromList = products.FirstOrDefault (w => w.ProductId == id);
-            products.Remove (productFromList);
+
+            if (products.Count() >5)
+            {      
+                products.Remove (productFromList);
+            }
 
             var convertedJson = JsonConvert.SerializeObject (products, Formatting.Indented);
 

@@ -3,7 +3,7 @@
     {{ pageTitle }}
   </div>
   <div class='col-md-2'>
-  <a routerLink="/create-product">Create New Product</a>
+  <a routerLink="/products/create-product">Create New Product</a>
   </div>
   <div class='card-body'>
     <div class='row'>
@@ -45,7 +45,7 @@
                   [style.width.px]='imageWidth'
                   [style.margin.px]='imageMargin'> 
             </td>
-            <td>   <a [routerLink]="['/products', product.productId]">
+            <td>   <a [routerLink]="['/products/product', product.productId]">
               {{ product.productName }}
             </a></td>
             <td>{{ product.productCode | lowercase |  convertToSpace:'-' }}</td>

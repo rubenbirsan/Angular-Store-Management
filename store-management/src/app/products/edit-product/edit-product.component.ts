@@ -56,10 +56,15 @@ export class EditProductComponent implements OnInit {
       }
   
       const newProduct: Product = {
-        ...this.productForm.value,
-        rating: 1
+        ...this.productForm.value
       };
+
+      const param = +this.route.snapshot.paramMap.get('id');
   
-      this.create.emit(newProduct);
+      this.productService.updateProduct(param, newProduct).subscribe(
+        product =>{
+           console.log(product)
+        },
+        error => this.errorMessage = <any>error);
     }
 }
