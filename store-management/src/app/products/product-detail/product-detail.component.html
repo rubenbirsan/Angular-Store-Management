@@ -49,15 +49,19 @@
       <i class='fa fa-chevron-left'></i> Back
     </button>
 
-    <button class='btn btn-outline-secondary' [style.margin-left.px]='20' style='width:80px' [routerLink]="['/products/edit-product', product.productId]">
+    <button class='btn btn-warning' [style.margin-left.px]='20' style='width:80px' [routerLink]="['/products/edit-product', product.productId]">
       <i class='fa'></i> Edit
     </button>
 
-    <button  [disabled]='product.isFirst' class='btn btn-outline-secondary'  [style.margin-left.px]='60' style='width:110px' [routerLink]="['/products/product', product.productId - 1]">
+    <button class='btn btn-danger' (click)='deleteProduct()' [style.margin-left.px]='20' style='width:80px'>
+      <i class='fa'></i> Delete
+    </button>
+
+    <button  [disabled]='product.isFirst' class='btn btn-info'  [style.margin-left.px]='60' style='width:110px' [routerLink]="['/products/product', product.productId - 1]">
       <i class='fa fa-chevron-left'></i> Previous
     </button>
 
-    <button [disabled]='product.isLast'  class='btn btn-outline-secondary' [style.margin-left.px]='20' style='width:110px' [routerLink]="['/products/product', product.productId + 1]">
+    <button [disabled]='product.isLast'  class='btn btn-info' [style.margin-left.px]='20' style='width:110px' [routerLink]="['/products/product', product.productId + 1]">
        Next
        <i class='fa fa-chevron-right'></i>
     </button>

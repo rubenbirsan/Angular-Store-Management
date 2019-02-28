@@ -14,7 +14,7 @@ export class ProductListComponent implements OnInit {
   pageTitle: string = "Product List";
   imageWidth: number = 40;
   imageMargin: number = 2;
-  showImages: boolean = false;
+  showImages: boolean = true;
 
   _listFilter = '';
   get listFilter(): string {
@@ -30,9 +30,7 @@ export class ProductListComponent implements OnInit {
   currentWidth = 0;
   errorMessage = '';
 
-  toggleImage() : void{
-    this.showImages = !this.showImages;
-  }
+ 
 
   performFilter(filterBy: string): Product[] {
     filterBy = filterBy.toLocaleLowerCase();
@@ -45,6 +43,10 @@ export class ProductListComponent implements OnInit {
    
   }
 
+  toggleImage() : void{
+    this.showImages = !this.showImages;
+  }
+  
   onRatingClicked(message: string) : void{
     this.pageTitle = message;
   }

@@ -54,6 +54,12 @@ export class ProductService {
     });
   }
 
+  deleteProduct(id: number): Observable<any> {
+    return this.http.delete(this.productUrl + '/DeleteProduct/' + id, {
+      responseType: 'text'
+    });
+  }
+
   private handleError(err: HttpErrorResponse) {
     // in a real world app, we may send the server to some remote logging infrastructure
     // instead of just logging it to the console

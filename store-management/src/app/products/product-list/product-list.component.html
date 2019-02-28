@@ -2,8 +2,11 @@
   <div class='card-header'>
     {{ pageTitle }}
   </div>
+
   <div class='col-md-2'>
-  <a routerLink="/products/create-product">Create New Product</a>
+      <button  class='btn btn-secondary'  [style.margin-top.px]='20'[routerLink]="['/products/create-product']">
+        Add product
+     </button>
   </div>
   <div class='card-body'>
     <div class='row'>

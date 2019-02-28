@@ -2,7 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Product } from '../product';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { ProductService } from '../product.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'br-edit-product',
@@ -17,7 +17,8 @@ export class EditProductComponent implements OnInit {
   errorMessage = '';
   
   constructor(private route: ActivatedRoute,
-    private productService: ProductService) { }
+    private productService: ProductService,
+    private router: Router) { }
 
     ngOnInit() {
       this.productForm = new FormGroup({
@@ -63,7 +64,8 @@ export class EditProductComponent implements OnInit {
   
       this.productService.updateProduct(param, newProduct).subscribe(
         product =>{
-           console.log(product)
+           console.log(product),
+           this.router.navigate(['/products']); 
         },
         error => this.errorMessage = <any>error);
     }

@@ -69,17 +69,19 @@ namespace ProductAPI.Controllers {
 
             if (ModelState.IsValid) {
 
-                products[indexOfProduct].ProductName = product.ProductName;
-                products[indexOfProduct].ProductCode = product.ProductCode;
-                products[indexOfProduct].Price = product.Price;
-                products[indexOfProduct].StarRating = product.StarRating;
+                if (products[indexOfProduct].ProductId > 5) {
+                    products[indexOfProduct].ProductName = product.ProductName;
+                    products[indexOfProduct].ProductCode = product.ProductCode;
+                    products[indexOfProduct].Price = product.Price;
+                    products[indexOfProduct].StarRating = product.StarRating;
 
-                var convertedJson = JsonConvert.SerializeObject (products, Formatting.Indented);
+                    var convertedJson = JsonConvert.SerializeObject (products, Formatting.Indented);
 
-                try {
-                    System.IO.File.WriteAllText ("Files/products.json", convertedJson);
-                } catch {
+                    try {
+                        System.IO.File.WriteAllText ("Files/products.json", convertedJson);
+                    } catch {
 
+                    }
                 }
             }
 
@@ -92,8 +94,7 @@ namespace ProductAPI.Controllers {
             var products = JsonConvert.DeserializeObject<List<Product>> (System.IO.File.ReadAllText ("Files/products.json"));
             var productFromList = products.FirstOrDefault (w => w.ProductId == id);
 
-            if (products.Count() >5)
-            {      
+            if (products.Count () > 5) {
                 products.Remove (productFromList);
             }
 
