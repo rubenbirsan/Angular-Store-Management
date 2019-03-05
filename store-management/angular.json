@@ -23,9 +23,13 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "../store-management/node_modules/bootstrap/dist/css/bootstrap.css",
+              "src/styles.css"           
             ],
-            "scripts": [],
+            "scripts": [
+              "../store-management/node_modules/jquery/dist/jquery.js",
+              "../store-management/node_modules/bootstrap/dist/js/bootstrap.js"
+            ],
             "es5BrowserSupport": true
           },
           "configurations": {

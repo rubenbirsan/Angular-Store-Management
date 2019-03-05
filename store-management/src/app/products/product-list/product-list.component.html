@@ -48,7 +48,8 @@
                   [style.width.px]='imageWidth'
                   [style.margin.px]='imageMargin'> 
             </td>
-            <td>   <a [routerLink]="['/products/product', product.productId]">
+            <td>   
+              <a [routerLink]="['/products/product', product.productId]">
               {{ product.productName }}
             </a></td>
             <td>{{ product.productCode | lowercase |  convertToSpace:'-' }}</td>

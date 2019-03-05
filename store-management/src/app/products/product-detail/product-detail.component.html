@@ -1,70 +1,102 @@
-<div class='card' *ngIf='product'>
-  <div class='card-header'>
-    {{pageTitle + ': ' + product.productName}}
+<div class="card" *ngIf="product">
+  <div class="card-header">
+    <button
+      class="btn btn-outline-secondary"
+      [style.margin-right.px]="20"
+      style="width:80px"
+      [routerLink]="['/products']"
+    >
+      <i class="fa fa-chevron-left"></i> Back
+    </button>
+    {{ pageTitle + ": " + product.productName }}
   </div>
 
-
-  <div class='card-body'>
-    <div class='row'>
-      <div class='col-md-8'>
-        <div class='row'>
-          <div class='col-md-4'>Name:</div>
-          <div class='col-md-8'>{{product.productName}}</div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="row">
+          <div class="col-md-4">Name:</div>
+          <div class="col-md-8">{{ product.productName }}</div>
         </div>
-        <div class='row'>
-          <div class='col-md-4'>Code:</div>
-          <div class='col-md-8'>{{product.productCode | lowercase | convertToSpace: '-'}}</div>
+        <div class="row">
+          <div class="col-md-4">Code:</div>
+          <div class="col-md-8">
+            {{ product.productCode | lowercase | convertToSpace: "-" }}
+          </div>
         </div>
-        <div class='row'>
-          <div class='col-md-4'>Description:</div>
-          <div class='col-md-8'>{{product.description}}</div>
+        <div class="row">
+          <div class="col-md-4">Description:</div>
+          <div class="col-md-8">{{ product.description }}</div>
         </div>
-        <div class='row'>
-          <div class='col-md-4'>Availability:</div>
-          <div class='col-md-8'>{{product.releaseDate}}</div>
+        <div class="row">
+          <div class="col-md-4">Availability:</div>
+          <div class="col-md-8">{{ product.releaseDate }}</div>
         </div>
-        <div class='row'>
-          <div class='col-md-4'>Price:</div>
-          <div class='col-md-8'>{{product.price|currency:'USD':'symbol'}}</div>
+        <div class="row">
+          <div class="col-md-4">Price:</div>
+          <div class="col-md-8">
+            {{ product.price | currency: "USD":"symbol" }}
+          </div>
         </div>
-        <div class='row'>
-          <div class='col-md-4'>5 Star Rating:</div>
-          <div class='col-md-8'>
-            <br-star [rating]='product.starRating'>
-            </br-star>
+        <div class="row">
+          <div class="col-md-4">5 Star Rating:</div>
+          <div class="col-md-8">
+            <br-star [rating]="product.starRating"> </br-star>
           </div>
         </div>
       </div>
 
-
-      <div *ngIf='product.imageUrl != ""' class='col-md-4'>
-        <img class='center-block img-responsive' [style.width.px]='200'  [style.height.px]='200' [style.margin.px]='2' [src]='product.imageUrl'
-          [title]='product.productName'>
+      <div *ngIf="product.imageUrl != ''" class="col-md-4">
+        <img
+          class="center-block img-responsive"
+          [style.width.px]="200"
+          [style.height.px]="200"
+          [style.margin.px]="2"
+          [src]="product.imageUrl"
+          [title]="product.productName"
+        />
       </div>
     </div>
   </div>
 
-  <div class='card-footer'>
-    <button class='btn btn-outline-secondary' style='width:80px' [routerLink]="['/products']">
-      <i class='fa fa-chevron-left'></i> Back
-    </button>
+  <div class="card-footer">
+    <div class="btn-group mr-2" role="group" aria-label="First group">
+      <button
+        class="btn btn-warning btn-responsive"
+        style="width:80px"
+        [routerLink]="['/products/edit-product', product.productId]"
+      >
+        <i class="fa"></i> Edit
+      </button>
+      <span class="border"></span>
+      <button
+        class="btn btn-danger btn-responsive"
+        (click)="deleteProduct()"
+        style="width:80px"
+      >
+        <i class="fa"></i> Delete
+      </button>
+    </div>
 
-    <button class='btn btn-warning' [style.margin-left.px]='20' style='width:80px' [routerLink]="['/products/edit-product', product.productId]">
-      <i class='fa'></i> Edit
-    </button>
-
-    <button class='btn btn-danger' (click)='deleteProduct()' [style.margin-left.px]='20' style='width:80px'>
-      <i class='fa'></i> Delete
-    </button>
-
-    <button  [disabled]='product.isFirst' class='btn btn-info'  [style.margin-left.px]='60' style='width:110px' [routerLink]="['/products/product', product.productId - 1]">
-      <i class='fa fa-chevron-left'></i> Previous
-    </button>
-
-    <button [disabled]='product.isLast'  class='btn btn-info' [style.margin-left.px]='20' style='width:110px' [routerLink]="['/products/product', product.productId + 1]">
-       Next
-       <i class='fa fa-chevron-right'></i>
-    </button>
-      
+    <div class="btn-group" role="group" aria-label="First group">
+      <button
+        [disabled]="product.isFirst"
+        class="btn btn-info btn-responsive"
+        style="width:110px"
+        [routerLink]="['/products/product', product.productId - 1]"
+      >
+        <i class="fa fa-chevron-left"></i> Previous
+      </button>
+      <span class="border"></span>
+      <button
+        [disabled]="product.isLast"
+        class="btn btn-info btn-responsive"
+        style="width:110px"
+        [routerLink]="['/products/product', product.productId + 1]"
+      >
+        Next
+        <i class="fa fa-chevron-right"></i>
+      </button>
+    </div>
   </div>
 </div>

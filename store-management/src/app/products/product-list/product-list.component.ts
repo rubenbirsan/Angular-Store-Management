@@ -36,7 +36,8 @@ export class ProductListComponent implements OnInit {
     filterBy = filterBy.toLocaleLowerCase();
     return this.products.filter((product: Product) =>
       product.productName.toLocaleLowerCase().indexOf(filterBy) !== -1 ||
-      product.productCode.toLocaleLowerCase().indexOf(filterBy) !== -1);
+      product.productCode.toLocaleLowerCase().indexOf(filterBy) !== -1 ||
+      product.releaseDate.toLocaleLowerCase().indexOf(filterBy) !== -1);
   }
 
   constructor(private productService: ProductService) { 
@@ -46,7 +47,7 @@ export class ProductListComponent implements OnInit {
   toggleImage() : void{
     this.showImages = !this.showImages;
   }
-  
+
   onRatingClicked(message: string) : void{
     this.pageTitle = message;
   }

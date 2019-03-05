@@ -15,6 +15,7 @@ export class EditProductComponent implements OnInit {
   productForm: FormGroup;
   @Output() create = new EventEmitter<Product>();
   errorMessage = '';
+  productId: number;
   
   constructor(private route: ActivatedRoute,
     private productService: ProductService,
@@ -47,6 +48,8 @@ export class EditProductComponent implements OnInit {
             price: new FormControl(product.price),
             starRating: new FormControl(product.starRating),
           });
+
+          this.productId = product.productId;
         },
         error => this.errorMessage = <any>error);
     }
@@ -65,7 +68,7 @@ export class EditProductComponent implements OnInit {
       this.productService.updateProduct(param, newProduct).subscribe(
         product =>{
            console.log(product),
-           this.router.navigate(['/products']); 
+           this.router.navigate(['/products/product/' + this.productId]); 
         },
         error => this.errorMessage = <any>error);
     }
