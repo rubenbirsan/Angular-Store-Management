@@ -6,6 +6,7 @@ import { SharedModule } from '../shared/shared.module';
 import { CreateProductComponent } from './create-product/create-product.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
 import { ProductRoutingModule } from './product-routing.module';
+import { ProductListNgrxComponent } from './product-list-ngrx/product-list-ngrx.component';
 
 @NgModule({
   declarations: [

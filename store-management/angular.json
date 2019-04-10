@@ -24,7 +24,7 @@
             ],
             "styles": [
               "../store-management/node_modules/bootstrap/dist/css/bootstrap.css",
-              "src/styles.css"           
+              "src/styles.css"
             ],
             "scripts": [
               "../store-management/node_modules/jquery/dist/jquery.js",
@@ -136,5 +136,8 @@
       }
     }
   },
-  "defaultProject": "store-management"
+  "defaultProject": "store-management",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }
