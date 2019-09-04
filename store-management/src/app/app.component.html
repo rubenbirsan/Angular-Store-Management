@@ -1,6 +1,11 @@
 
 
+
 <div class='body-content col-md-12' style="max-width: 1200px !important;  margin: auto;" >
+
+  <select #languageselect (change)="translate.use(languageselect.value)">
+    <option *ngFor="let lang of translate.getLangs()" value="{{lang}}">{{lang}}</option>
+  </select>
   <br-navbar></br-navbar>
   <router-outlet  ></router-outlet>
 </div>

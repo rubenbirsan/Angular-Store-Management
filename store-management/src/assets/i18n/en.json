@@ -1,0 +1,9 @@
+{
+    "HOME": {
+        "TITLE": "Welcome to my application",
+        "TEXT_DEVELOPED": "Developed by",
+        "NAV_ITEM1": "Home",
+        "NAV_ITEM2": "Product List",
+        "NAV_ITEM3": "Products Ngrx"
+    }
+}
